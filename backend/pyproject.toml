@@ -5,6 +5,18 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "aerich>=0.9.1",
+    "bcrypt>=5.0.0",
+    "dotenv>=0.9.9",
     "fastapi>=0.118.0",
+    "openai>=1.44.0",
+    "pyjwt>=2.10.1",
+    "pinecone-client>=3.2.2",
+    "tortoise-orm[asyncpg]>=0.25.1",
     "uvicorn>=0.37.0",
 ]
+
+[tool.aerich]
+tortoise_orm = "config.TORTOISE_ORM"
+location = "./migrations"
+src_folder = "./."
