@@ -4,13 +4,15 @@ type ComposerProps = {
   input: string;
   setInput: (v: string) => void;
   onSend: (text: string) => void;
+  disabled?: boolean;
 };
 
-export default function TextInput({ input, setInput, onSend }: ComposerProps) {
+export default function TextInput({ input, setInput, onSend, disabled = false }: ComposerProps) {
   return (
     <form
       onSubmit={e => {
         e.preventDefault();
+        if (disabled) return;
         if (!input.trim()) return;
         onSend(input.trim());
         setInput('');
@@ -24,8 +26,10 @@ export default function TextInput({ input, setInput, onSend }: ComposerProps) {
             className="w-full resize-none bg-transparent outline-none placeholder:text-zinc-400 text-sm md:text-base"
             value={input}
             placeholder="Say something..."
+            disabled={disabled}
             onChange={e => setInput(e.currentTarget.value)}
             onKeyDown={e => {
+              if (disabled) return;
               if (e.key === 'Enter' && !e.shiftKey) {
                 e.preventDefault();
                 if (input.trim()) {
@@ -39,7 +43,7 @@ export default function TextInput({ input, setInput, onSend }: ComposerProps) {
         <button
           type="submit"
           className="h-10 w-10 rounded-xl bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center hover:opacity-90 active:scale-95 disabled:opacity-40 cursor-pointer"
-          disabled={!input.trim()}
+          disabled={disabled || !input.trim()}
           aria-label="Send"
           title="Send"
         >

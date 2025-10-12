@@ -1,103 +1,53 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#030303] text-white">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur supports-[backdrop-filter]:bg-black/20">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 text-white">
+          <Link href="/" className="flex items-center gap-3">
+            <Image src="/simplyphiLogo.png" width={40} height={40} alt="SimplyPhi" className="rounded-sm" />
+            <span className="text-base md:text-lg font-semibold tracking-tight">SimplyPhi</span>
+          </Link>
+          <nav className="hidden items-center gap-6 md:flex">
+            <a href="#how" className="text-sm text-white/70 hover:text-white">How it works</a>
+          </nav>
+          <div className="flex items-center gap-2">
+            <Link href="/signin">
+              <Button variant="ghost" className="hidden md:inline-flex text-white hover:bg-white/10 hover:text-white cursor-pointer">Sign In</Button>
+            </Link>
+            <Link href="/signup">
+              <Button size="sm" className="bg-white text-black hover:bg-white/90 hover:text-black cursor-pointer">Get Started</Button>
+            </Link>
+          </div>
         </div>
+      </header>
+
+
+      <main className="flex-1 pt-24">
+        
+        <section className="mx-auto max-w-none px-0">
+          <HeroGeometric
+            badge="Real Estate RAG"
+            title1="AI-Powered"
+            title2="Real Estate Insights"
+          />
+        </section>
+        <footer className="mx-auto mt-24 w-full max-w-6xl border-t border-white/10 px-4 py-6 text-xs text-white/60">
+          <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
+            <span>By Rohit Saluja</span>
+            <div className="flex items-center gap-4">
+              <a href="#how" className="hover:text-white">How it works</a>
+            </div>
+          </div>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

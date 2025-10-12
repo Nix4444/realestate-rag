@@ -10,7 +10,7 @@ export default function MobileTopBar({ onToggleSidebar, onNewChat }: MobileTopBa
     <div className="md:hidden sticky top-0 z-20 bg-white/80 dark:bg-zinc-950/80 backdrop-blur border-b border-zinc-200 dark:border-zinc-800 px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-2">
         <button
-          className="h-9 w-9 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 flex items-center justify-center cur"
+          className="h-9 w-9 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 flex items-center justify-center cursor-pointer"
           onClick={onToggleSidebar}
           aria-label="Open sidebar"
         >
